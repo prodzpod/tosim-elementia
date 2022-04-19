@@ -1,0 +1,9 @@
+:root {
+    --consonant: 100px;
+    --kern: 0;
+}
+
+img {
+    height: var(--consonant);
+    margin: 0 var(--kern);
+}
