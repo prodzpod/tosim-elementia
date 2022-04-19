@@ -1,9 +1,18 @@
 :root {
     --consonant: 100px;
     --kern: 0;
+    --bg: white;
+    --color-h: 0deg;
+    --color-s: 0%;
+    --color-v: 0%;
+}
+
+body {
+    background-color: var(--bg);
 }
 
 img {
     height: var(--consonant);
     margin: 0 var(--kern);
+    filter: sepia(100%) saturate(calc(30 * var(--color-s))) brightness(var(--color-v)) hue-rotate(var(--color-h));
 }
