@@ -2,6 +2,7 @@
     --consonant: 100px;
     --kern: 0;
     --bg: white;
+    --color: black;
     --color-h: 0deg;
     --color-s: 0%;
     --color-v: 0%;
@@ -9,6 +10,7 @@
 
 body {
     background-color: var(--bg);
+    color: var(--color);
 }
 
 img {

@@ -1,6 +1,7 @@
 let txt = "";
 window.onload = function() {
     render("title", "tosim elementija");
+    document.getElementById("mobile").focus();
 }
 
 const REPLS = {"b": "p", "d": "t", "g": "k", "c": "k", "y": "j", "h": "x", "ŋ": "ng", "w": "v"};
@@ -39,3 +40,39 @@ document.addEventListener('keydown', (event) => {
     render("input", txt);
     document.getElementById("input-type").innerHTML = txt;
 }, false);
+
+function updateTheme() {
+    let bg = document.getElementById("bg").value;
+    let text = document.getElementById("text").value;
+    document.querySelector(':root').style.setProperty('--bg', bg);
+    document.querySelector(':root').style.setProperty('--color', text);
+    let hsv = RGBtoHSV(parseInt(text.slice(1, 2), 16), parseInt(text.slice(3, 4), 16), parseInt(text.slice(5, 6), 16));
+    document.querySelector(':root').style.setProperty('--color-h', (hsv.h * 360 - 80) + "deg");
+    document.querySelector(':root').style.setProperty('--color-s', (hsv.s * 100) + "%");
+    document.querySelector(':root').style.setProperty('--color-v', (hsv.v * 1700) + "%");
+    console.log(bg, text, hsv);
+}
+
+function RGBtoHSV(r, g, b) {
+    if (arguments.length === 1) {
+        g = r.g, b = r.b, r = r.r;
+    }
+    var max = Math.max(r, g, b), min = Math.min(r, g, b),
+        d = max - min,
+        h,
+        s = (max === 0 ? 0 : d / max),
+        v = max / 255;
+
+    switch (max) {
+        case min: h = 0; break;
+        case r: h = (g - b) + d * (g < b ? 6: 0); h /= 6 * d; break;
+        case g: h = (b - r) + d * 2; h /= 6 * d; break;
+        case b: h = (r - g) + d * 4; h /= 6 * d; break;
+    }
+
+    return {
+        h: h,
+        s: s,
+        v: v
+    };
+}
