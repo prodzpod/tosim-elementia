@@ -4,7 +4,7 @@ window.onload = function() {
     document.getElementById("mobile").focus();
 }
 
-const REPLS = {"b": "p", "d": "t", "g": "k", "c": "k", "y": "j", "h": "x", "ŋ": "ng", "w": "v", "z": "s"};
+const REPLS = {"b": "p", "d": "t", "g": "k", "c": "k", "y": "j", "h": "x", "ŋ": "ng", "w": "v", "z": "s", "q": "k"};
 function repl(_char) {
     let char = _char;
     if (!char?.length) return "";
