@@ -8,8 +8,17 @@
     <div id="input"></div>
     <div id="input-type"></div>
     <input id="mobile" style="display: none">
+    <label for="font">Font</label>
+    <select id="font" value="Georgia" onchange="updateFont()">
+        <option>Georgia</option>
+        <option>Pengita3n</option>
+        <option>sonosim</option>
+    </select>
     <label for="bg">Background</label>
     <input id="bg" type="color" value="#FFFFFF" onchange="updateTheme()">
     <label for="text">Text</label>
     <input id="text" type="color" value="#000000" onchange="updateTheme()">
+    <label for="kern">Kerning</label>
+    <input id="kern" type="number" value="0" onchange="updateTheme()">
+    <label for="kern">px</label>
 </body>

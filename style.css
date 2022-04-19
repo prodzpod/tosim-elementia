@@ -17,6 +17,11 @@ img {
     height: var(--consonant);
     margin: 0 var(--kern);
     filter: sepia(100%) saturate(calc(30 * var(--color-s))) brightness(var(--color-v)) hue-rotate(var(--color-h));
+    image-rendering: crisp-edges;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -o-crisp-edges;
+    image-rendering: -webkit-optimize-contrast;
+    -ms-interpolation-mode: nearest-neighbor;
 }
 
 div {

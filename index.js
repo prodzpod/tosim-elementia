@@ -1,4 +1,4 @@
-let txt = "";
+let txt = ""; let font = "georgia";
 window.onload = function() {
     render("title", "tosim elementija");
     document.getElementById("mobile").focus();
@@ -23,12 +23,12 @@ function render(id, txt) {
         if (char === " ") char = "space";
         else {
             if (char === "n" && txt[ptr+1] === "g") { char += txt[ptr+1]; ptr++; }
-            if (char === "y" && VOWEL.includes(txt[ptr+1])) { char += txt[ptr+1]; ptr++; }
-            else if (!VOWEL.includes(char) && VOWEL.includes(txt[ptr+1])) { char += txt[ptr+1]; ptr++; }
+            if (char === "j" && VOWEL.includes(txt[ptr+1])) { char += txt[ptr+1]; ptr++; }
+            else if (CHARS.includes(char) && !VOWEL.includes(char) && VOWEL.includes(txt[ptr+1])) { char += txt[ptr+1]; ptr++; }
         }
         if (!CHARS.includes(char)) continue;
         let img = document.createElement("img");
-        img.src = "./img/" + char + ".png";
+        img.src = "./" + font + "/" + char + ".png";
         el.appendChild(img);
     }
 }
@@ -41,11 +41,19 @@ document.addEventListener('keydown', (event) => {
     document.getElementById("input-type").innerHTML = txt;
 }, false);
 
+function updateFont() {
+    font = document.getElementById("font").value.toLowerCase();
+    render("title", "tosim elementija");
+    render("input", txt);
+}
+
 function updateTheme() {
     let bg = document.getElementById("bg").value;
     let text = document.getElementById("text").value;
+    let kern = document.getElementById("kern").value;
     document.querySelector(':root').style.setProperty('--bg', bg);
     document.querySelector(':root').style.setProperty('--color', text);
+    document.querySelector(':root').style.setProperty('--kern', kern);
     let hsv = RGBtoHSV(parseInt(text.slice(1, 2), 16), parseInt(text.slice(3, 4), 16), parseInt(text.slice(5, 6), 16));
     document.querySelector(':root').style.setProperty('--color-h', (hsv.h * 360 - 80) + "deg");
     document.querySelector(':root').style.setProperty('--color-s', (hsv.s * 100) + "%");
