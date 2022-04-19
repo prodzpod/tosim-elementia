@@ -8,7 +8,7 @@ function repl(_char) {
     let char = _char;
     if (!char?.length) return "";
     char = char.toLowerCase();
-    if (txt.at(-2) === "n" && char === "g") return char;
+    if (txt.at(-1) === "n" && char === "g") return char;
     return REPLS[char] ?? char;
 }
 
