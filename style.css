@@ -18,3 +18,7 @@ img {
     margin: 0 var(--kern);
     filter: sepia(100%) saturate(calc(30 * var(--color-s))) brightness(var(--color-v)) hue-rotate(var(--color-h));
 }
+
+div {
+    margin-bottom: 16px
+}
