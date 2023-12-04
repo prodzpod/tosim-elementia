@@ -7,7 +7,12 @@ window.onload = function() {
         el.onfocus = () => { enableText = false; }
         el.onblur = () => { enableText = true; }
     }
-
+    document.getElementById('mobile').oninput = (e) => { 
+        let k = e.data;
+        if (e.data === null) k = 'Backspace';
+        if (e.data === ' ') k = 'Space';
+        key(k);
+    };
 }
 
 const REPLS = {"b": "p", "d": "t", "g": "k", "c": "k", "y": "j", "h": "x", "ŋ": "ng", "w": "v", "z": "s", "q": "k"};
@@ -22,6 +27,7 @@ function repl(_char) {
 const CHARS = ["a", "e", "i", "ja", "je", "ji", "jo", "ju", "k", "ka", "ke", "ki", "ko", "ku", "l", "la", "le", "li", "lo", "lu", "m", "ma", "me", "mi", "mo", "mu", "n", "na", "ne", "ng", "nga", "nge", "ngi", "ngo", "ngu", "ni", "no", "nu", "o", "p", "pa", "pe", "pi", "po", "pu", "r", "ra", "re", "ri", "ro", "ru", "s", "sa", "se", "si", "so", "space", "su", "t", "ta", "te", "ti", "to", "tu", "u", "v", "va", "ve", "vi", "vo", "vu", "x", "xa", "xe", "xi", "xo", "xu"];
 const VOWEL = ["a", "e", "i", "o", "u"];
 function render(id, txt) {
+    document.getElementById('mobile').innerText = txt;
     let el = document.getElementById(id);
     while (el.firstChild) el.removeChild(el.firstChild);
     for (let ptr = 0; ptr < txt.length; ptr++) {
@@ -39,14 +45,16 @@ function render(id, txt) {
     }
 }
 
-document.addEventListener('keydown', (event) => {
+document.addEventListener('keydown', (event) => { key(event.key); }, false);
+
+function key(k) {
     if (!enableText) return;
-    if (event.key === "Backspace") txt = txt.slice(0, -1);
-    else if (event.key === "Space") txt += " ";
-    else if (event.key.length === 1) txt += repl(event.key[0]);
+    if (k === "Backspace") txt = txt.slice(0, -1);
+    else if (k === "Space") txt += " ";
+    else if (k.length === 1) txt += repl(k[0]);
     render("input", txt);
     document.getElementById("input-type").innerHTML = txt;
-}, false);
+}
 
 function updateFont() {
     font = document.getElementById("font").value.toLowerCase();
