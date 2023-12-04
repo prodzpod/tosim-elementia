@@ -7,12 +7,11 @@ window.onload = function() {
         el.onblur = () => { enableText = true; }
     }
     document.getElementById('mobile').oninput = (e) => { 
-        if (pc) { document.getElementById('debug').innerText = document.getElementById('debug').innerText + " / PC:" + e.data; return; } 
+        if (pc) return;
         let k = e.data;
         if (k === null) return;
         if (k === ' ') k = 'Space';
         else k = k[0];
-        document.getElementById('debug').innerText = document.getElementById('debug').innerText + " / " + e.data;
         key(k);
     };
 }
@@ -47,7 +46,7 @@ function render(id, txt) {
     }
 }
 
-document.addEventListener('keydown', (event) => { pc = true; key(event.key); }, false);
+document.addEventListener('keydown', (event) => { document.getElementById('debug').innerText = document.getElementById('debug').innerText + " / " + event.key; pc = true; key(event.key); }, false);
 
 function key(k) {
     if (!enableText) return;
