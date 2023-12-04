@@ -7,7 +7,7 @@ window.onload = function() {
         el.onblur = () => { enableText = true; }
     }
     document.getElementById('mobile').oninput = (e) => { 
-        if (pc) {alert('PC: ' + e.data)} return;
+        if (pc) { alert('PC: ' + e.data); return; } 
         let k = e.data;
         if (k === null) return;
         if (k === ' ') k = 'Space';
