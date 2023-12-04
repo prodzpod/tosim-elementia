@@ -10,7 +10,7 @@ window.onload = function() {
         if (pc) return;
         let k = e.data;
         if (k === null) k = 'Backspace';
-        if (k === ' ') k = 'Space';
+        else if (k === ' ') k = 'Space';
         else k = k[0];
         key(k);
     };
