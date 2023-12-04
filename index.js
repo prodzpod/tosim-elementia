@@ -47,7 +47,7 @@ function render(id, txt) {
     }
 }
 
-document.addEventListener('keydown', (event) => { if (!pc && event.key === "Backspace") return; pc = true; key(event.key); }, false);
+document.addEventListener('keydown', (event) => { alert(event.key); pc = true; key(event.key); }, false);
 
 function key(k) {
     if (!enableText) return;
