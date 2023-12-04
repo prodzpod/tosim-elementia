@@ -12,7 +12,7 @@ window.onload = function() {
         let k = e.data;
         if (e.data === null) return;
         if (e.data === ' ') k = 'Space';
-        console.log('input');
+        alert(e.data);
         key(k);
     };
 }
@@ -47,7 +47,7 @@ function render(id, txt) {
     }
 }
 
-document.addEventListener('keydown', (event) => { alert(event.key); pc = true; key(event.key); }, false);
+document.addEventListener('keydown', (event) => { pc = true; key(event.key); }, false);
 
 function key(k) {
     if (!enableText) return;
