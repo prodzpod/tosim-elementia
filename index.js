@@ -46,7 +46,7 @@ function render(id, txt) {
     }
 }
 
-document.addEventListener('keydown', (event) => { document.getElementById('debug').innerText = document.getElementById('debug').innerText + " / " + event.key; pc = true; key(event.key); }, false);
+document.addEventListener('keydown', (event) => { if (!pc && ["Unidentified", "Dead", "Backspace", "Enter"].includes(event.key)) return; pc = true; key(event.key); }, false);
 
 function key(k) {
     if (!enableText) return;
