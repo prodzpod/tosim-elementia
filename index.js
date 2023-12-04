@@ -1,11 +1,13 @@
-let txt = ""; let font = "georgia";
+let txt = ""; let font = "georgia"; let enableText = true;
 window.onload = function() {
     render("title", "tosim elementija");
-    document.getElementById("mobile").focus();
-    if ("virtualKeyboard" in navigator) { 
-        navigator.virtualKeyboard.overlaysContent = true; 
-        navigator.virtualKeyboard.show(); 
+    for (let el of Array.from(document.getElementsByTagName('input'))) {
+        console.log(el);
+        el.onclick = (e) => e.stopPropagation();
+        el.onfocus = () => { enableText = false; }
+        el.onblur = () => { enableText = true; }
     }
+
 }
 
 const REPLS = {"b": "p", "d": "t", "g": "k", "c": "k", "y": "j", "h": "x", "ŋ": "ng", "w": "v", "z": "s", "q": "k"};
@@ -38,6 +40,7 @@ function render(id, txt) {
 }
 
 document.addEventListener('keydown', (event) => {
+    if (!enableText) return;
     if (event.key === "Backspace") txt = txt.slice(0, -1);
     else if (event.key === "Space") txt += " ";
     else if (event.key.length === 1) txt += repl(event.key[0]);

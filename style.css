@@ -11,6 +11,7 @@
 body {
     background-color: var(--bg);
     color: var(--color);
+    margin: 0;
 }
 
 img {
@@ -26,4 +27,22 @@ img {
 
 div {
     margin-bottom: 16px
+}
+
+#mobile {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    opacity: 0;
+    padding: 0;
+    border: 0px transparent;
+    margin: 0;
+    z-index: 0;
+}
+
+#fg {
+    position: relative;
+    z-index: 9999;
 }
