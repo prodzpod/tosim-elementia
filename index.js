@@ -2,16 +2,16 @@ let txt = ""; let font = "georgia"; let enableText = true; let pc = false;
 window.onload = function() {
     render("title", "tosim elementija");
     for (let el of Array.from(document.getElementsByTagName('input'))) {
-        console.log(el);
         el.onclick = (e) => e.stopPropagation();
         el.onfocus = () => { enableText = false; }
         el.onblur = () => { enableText = true; }
     }
     document.getElementById('mobile').oninput = (e) => { 
-        if (pc) return;
+        if (pc) {alert('PC: ' + e.data)} return;
         let k = e.data;
-        if (e.data === null) return;
-        if (e.data === ' ') k = 'Space';
+        if (k === null) return;
+        if (k === ' ') k = 'Space';
+        else k = k[0];
         alert(e.data);
         key(k);
     };
