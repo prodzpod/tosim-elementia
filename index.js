@@ -2,6 +2,10 @@ let txt = ""; let font = "georgia";
 window.onload = function() {
     render("title", "tosim elementija");
     document.getElementById("mobile").focus();
+    if ("virtualKeyboard" in navigator) { 
+        navigator.virtualKeyboard.overlaysContent = true; 
+        navigator.virtualKeyboard.show(); 
+    }
 }
 
 const REPLS = {"b": "p", "d": "t", "g": "k", "c": "k", "y": "j", "h": "x", "ŋ": "ng", "w": "v", "z": "s", "q": "k"};
