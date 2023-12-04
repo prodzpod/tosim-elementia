@@ -9,7 +9,7 @@ window.onload = function() {
     }
     document.getElementById('mobile').oninput = (e) => { 
         let k = e.data;
-        if (e.data === null) k = 'Backspace';
+        if (e.data === null) return;
         if (e.data === ' ') k = 'Space';
         key(k);
     };
