@@ -9,7 +9,7 @@ window.onload = function() {
     document.getElementById('mobile').oninput = (e) => { 
         if (pc) return;
         let k = e.data;
-        if (k === null) return;
+        if (k === null) k = 'Backspace';
         if (k === ' ') k = 'Space';
         else k = k[0];
         key(k);
@@ -74,7 +74,6 @@ function updateTheme() {
     document.querySelector(':root').style.setProperty('--color-h', (hsv.h * 360 - 80) + "deg");
     document.querySelector(':root').style.setProperty('--color-s', (hsv.s * 100) + "%");
     document.querySelector(':root').style.setProperty('--color-v', (hsv.v * 1700) + "%");
-    console.log(bg, text, hsv);
 }
 
 function RGBtoHSV(r, g, b) {
