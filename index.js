@@ -1,4 +1,4 @@
-let txt = ""; let font = "georgia"; let enableText = true;
+let txt = ""; let font = "georgia"; let enableText = true; let pc = false;
 window.onload = function() {
     render("title", "tosim elementija");
     for (let el of Array.from(document.getElementsByTagName('input'))) {
@@ -8,9 +8,11 @@ window.onload = function() {
         el.onblur = () => { enableText = true; }
     }
     document.getElementById('mobile').oninput = (e) => { 
+        if (pc) return;
         let k = e.data;
         if (e.data === null) return;
         if (e.data === ' ') k = 'Space';
+        console.log('input');
         key(k);
     };
 }
@@ -45,7 +47,7 @@ function render(id, txt) {
     }
 }
 
-document.addEventListener('keydown', (event) => { key(event.key); }, false);
+document.addEventListener('keydown', (event) => { if (!pc && event.key === "Backspace") return; pc = true; key(event.key); }, false);
 
 function key(k) {
     if (!enableText) return;
