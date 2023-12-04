@@ -12,6 +12,7 @@ body {
     background-color: var(--bg);
     color: var(--color);
     margin: 0;
+    padding: 32px;
 }
 
 img {
