@@ -7,12 +7,12 @@ window.onload = function() {
         el.onblur = () => { enableText = true; }
     }
     document.getElementById('mobile').oninput = (e) => { 
-        if (pc) { alert('PC: ' + e.data); return; } 
+        if (pc) { document.getElementById('debug').innerText = document.getElementById('debug').innerText + " / PC:" + e.data; return; } 
         let k = e.data;
         if (k === null) return;
         if (k === ' ') k = 'Space';
         else k = k[0];
-        alert(e.data);
+        document.getElementById('debug').innerText = document.getElementById('debug').innerText + " / " + e.data;
         key(k);
     };
 }
