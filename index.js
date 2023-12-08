@@ -14,6 +14,7 @@ window.onload = function() {
         else k = k[0];
         key(k);
     };
+    if (window.location.hash !== "#computer") document.getElementById('back').parentElement.removeChild(document.getElementById('back'));
 }
 
 const REPLS = {"b": "p", "d": "t", "g": "k", "c": "k", "y": "j", "h": "x", "ŋ": "ng", "w": "v", "z": "s", "q": "k"};
